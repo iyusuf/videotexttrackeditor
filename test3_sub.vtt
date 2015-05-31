@@ -1,0 +1,32 @@
+WEBVTT FILE
+
+1
+00:00:01.000 --> 00:00:05.000 D:vertical A:start
+Hello from GDS!!
+
+2
+00:00:10.000 --> 00:00:15.000
+This is a demo of out of band metadata muxing.
+
+3
+00:00:15.000 --> 00:00:15.000
+We will demo text stream
+
+4
+00:08:15.000 --> 00:08:30.000
+One for gps data and other for subtitle.
+
+5
+00:10:30.000 --> 00:010:47.000
+A google map would also be displayed.
+
+6
+00:12:47.000 --> 00:12:55.000
+We will still need to figure out "live streaming" though.
+
+7
+00:13:55.000 --> 00:13:60.000
+Thank you.
+
+
+
