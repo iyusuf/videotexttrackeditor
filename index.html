@@ -5,27 +5,10 @@
     <!-- only force Internet Explorer 10 standards for testing on local machine -->
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
 
-    <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #text-display {font-size:32px;color:blue;}
-	  #text-temp {font-size:26px;color:orange;}
-	  #text-gps {font-size:26px;color:green;}
-	  #map-canvas { height: 200px; width: 300px ; }
-	  
-	  #main { width: 1000px;  margin: 0 auto; }
-	.box {
-		float: left;
-		width: 200px;
-		height: 100px;
-		margin: 1em;
-	}
-		.after-box {
-		clear: left;
-	}
-    </style>
 
-    <script type="text/javascript">
+	<link rel="stylesheet" type="text/css" href="main.css">
+    
+	<script type="text/javascript">
 
         document.addEventListener("DOMContentLoaded", function () {  // don't run this until all DOM content is loaded 
 
@@ -130,13 +113,13 @@
 	
 
 	<div id="main">
-		    <video id="video1" width="500" height="380" controls>
-      <source src="SM137AD02806.mp4"  >
-	  <track id='track1' label='English captions'	src="test3_sub.vtt" 		kind='subtitles'	srclang='en' default >    
-	  <track id='track2' label='GPS Location'     	src="test3_gps.vtt" 		kind='metadata'		srclang='en' default>  
-	  <track id='track3' label='Temperature in C'	src="test3_temp.vtt" 		kind='metadata'		srclang='en' default> 
-	  <track id='track4' label='Slide Images'		src="test3_slideimages.vtt" kind='metadata'		srclang='en' default> 
-    </video>    
+		<video id="video1" width="500" height="380" controls>
+		  <source src="SM137AD02806.mp4"  >
+		  <track id='track1' label='English captions'	src="test3_sub.vtt" 		kind='subtitles'	srclang='en' default >    
+		  <track id='track2' label='GPS Location'     	src="test3_gps.vtt" 		kind='metadata'		srclang='en' default>  
+		  <track id='track3' label='Temperature in C'	src="test3_temp.vtt" 		kind='metadata'		srclang='en' default> 
+		  <track id='track4' label='Slide Images'		src="test3_slideimages.vtt" kind='metadata'		srclang='en' default> 
+		</video>    
 	
 		<div class="box" id="text-display"></div>
 		<div class="box" id="text-temp"></div>
