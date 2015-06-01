@@ -4,123 +4,28 @@
   <title>Cuechange event example</title>
     <!-- only force Internet Explorer 10 standards for testing on local machine -->
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-
-
 	<link rel="stylesheet" type="text/css" href="main.css">
-    
-	<script type="text/javascript">
-
-        document.addEventListener("DOMContentLoaded", function () {  // don't run this until all DOM content is loaded 
-
-		    var track1 = document.getElementById("track1");
-            track1.addEventListener("cuechange", function () {
-                var myTrack = this.track;             // track element is "this" 
-                var myCues = myTrack.activeCues;      // activeCues is an array of current cues.                                                    
-                if (myCues.length > 0) {
-                    var disp = document.getElementById("text-display");
-                    disp.innerText = myCues[0].text ;
-                }
-            }, false);
-			
-			var track2 = document.getElementById("track2");
-			track2.addEventListener("cuechange",function(){
-				var gpsTrack = this.track;
-				var gpsCues = gpsTrack.activeCues;
-				if (gpsCues.length > 0){
-					var dispgps = document.getElementById("text-gps");
-					//dispgps.innerText = gpsCues[0].text;
-					var gpsCue = gpsCues[0].text;
-					var firstCueData = JSON.parse(gpsCues[0].text);
-					dispgps.innerText = firstCueData.name + " at lat: " + firstCueData.lat + " and lon: " + firstCueData.lon;
-					clickroute(firstCueData.lat, firstCueData.lon);
-				}
-			},false);
-			
-	        var track3 = document.getElementById("track3");
-			track3.addEventListener("cuechange", function () {
-                var myTrack3 = this.track;             // track element is "this" 
-                var myCues3 = myTrack3.activeCues;      // activeCues is an array of current cues.
-				if (myCues3.length > 0) {	
-                    var disp = document.getElementById("text-temp");
-                    disp.innerText = myCues3[0].text ;
-                }
-            }, false);
-			
-			
-			var track4 = document.getElementById("track4");
-			var newImage = new Image();
-			track4.addEventListener("cuechange", function () {
-                var myTrack4 = this.track;             // track element is "this" 
-                var myCues4 = myTrack4.activeCues;      // activeCues is an array of current cues.
-				
-				if (myCues4.length > 0) {	
-					newImage = new Image();
-					newImage.src = myCues4[0].text;
-					var image = document.getElementById("imageid01");
-					image.src = myCues4[0].text;
-					
-					
-					
-                }
-            }, false);
-			
-			
-        }, false);      
-    </script>
-	
-	<!-- Map -->
-	 <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzAtGLHUKFD3dtSF5KGo89YauIwIz_5nQ">
-    </script>
-    <script type="text/javascript">
-		var map=null;
-		function initialize() {
-			var mapOptions = {
-			  center: new google.maps.LatLng(29.879382, -95.588725),
-			  zoom: 13
-			};
-			map = new google.maps.Map(document.getElementById("map-canvas"),
-				mapOptions);
-		}
-		google.maps.event.addDomListener(window, 'load', initialize);
-		
-		function clickroute(lat,lon) { //just omit the 'lati' and 'long'
-			//var latLng = new google.maps.LatLng(29.884018, -95.583276);
-			var latLng = new google.maps.LatLng(lat,lon);
-			//map.panTo(latLng);
-			map.setCenter(latLng);
-		}
-    </script>
-	
-	<script type="text/javascript">
-	 function vidplay() {
-       var video = document.getElementById("video1");
-       var button = document.getElementById("play");
-       if (video.paused) {
-          video.play();
-          button.textContent = "||";
-       } else {
-          video.pause();
-          button.textContent = ">";
-       }
-    }
-	
+	<!-- Map , load map js api before loading custom map calls at main.js -->
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzAtGLHUKFD3dtSF5KGo89YauIwIz_5nQ">
 	</script>
-	
+    <script type="text/javascript" src="main.js"></script>
+
+
   </head>
   <body>
 
-	
-
 	<div id="main">
-		<video id="video1" width="500" height="380" controls>
-		  <source src="SM137AD02806.mp4"  >
-		  <track id='track1' label='English captions'	src="test3_sub.vtt" 		kind='subtitles'	srclang='en' default >    
-		  <track id='track2' label='GPS Location'     	src="test3_gps.vtt" 		kind='metadata'		srclang='en' default>  
-		  <track id='track3' label='Temperature in C'	src="test3_temp.vtt" 		kind='metadata'		srclang='en' default> 
-		  <track id='track4' label='Slide Images'		src="test3_slideimages.vtt" kind='metadata'		srclang='en' default> 
-		</video>    
-	
+		<div  class="box" id="video">
+			<video id="video1" width="250" height="200" controls>
+			  <source src="test1.mp4"  >
+			  <track id='track1' label='English captions'	src="test3_sub.vtt" 		kind='subtitles'	srclang='en' default >    
+			  <track id='track2' label='GPS Location'     	src="test3_gps.vtt" 		kind='metadata'		srclang='en' default>  
+			  <track id='track3' label='Temperature in C'	src="test3_temp.vtt" 		kind='metadata'		srclang='en' default> 
+			  <track id='track4' label='Slide Images'		src="test3_slideimages.vtt" kind='metadata'		srclang='en' default> 
+			</video>    
+		</div>
+		<div  class="box" id="map-canvas"></div>
 		<div class="box" id="text-display"></div>
 		<div class="box" id="text-temp"></div>
 		<div class="box" id="text-gps"></div>
@@ -130,7 +35,7 @@
 			height="250" width="250">
 		</div>
 		
-		<div id="map-canvas"></div>
+		
 		<div id="buttonbar">
 			<button id="restart" onclick="restart();">[]</button> 
 			<button id="rew" onclick="skip(-10)">&lt;&lt;</button>

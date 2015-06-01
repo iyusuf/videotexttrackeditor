@@ -1,16 +1,16 @@
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #text-display {font-size:32px;color:blue;}
-	  #text-temp {font-size:26px;color:orange;}
-	  #text-gps {font-size:26px;color:green;}
-	  #map-canvas { height: 200px; width: 300px ; }
+      #text-display {font-size:16px;color:blue;}
+	  #text-temp {font-size:16px;color:orange;}
+	  #text-gps {font-size:16px;color:green;}
+	  #map-canvas { height: 200px; width: 200px ; }
 	  
 	  #main {margin: 0 auto; }
 	.box {
 		float: left;
 		width: 200px;
-		height: 100px;
-		margin: 1em;
+		height: 200px;
+		margin: 10px;
 	}
 		.after-box {
 		clear: left;
