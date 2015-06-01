@@ -1,4 +1,4 @@
-//bla dddd
+//bla
 document.addEventListener("DOMContentLoaded", function () {  // don't run this until all DOM content is loaded 
 
 	var track1 = document.getElementById("track1");
