@@ -20,50 +20,76 @@
 	
   </head>
   <body>
-    <h1>Hello, world!</h1>
-	
-	<div class="row">
-	  <div class="span">
-			<video id="video1" controls>
-			  <source src="test1.mp4"  >
-			  <track id='track1' label='English captions'	src="test3_sub.vtt" 		kind='subtitles'	srclang='en' default >    
-			  <track id='track2' label='GPS Location'     	src="test3_gps.vtt" 		kind='metadata'		srclang='en' default>  
-			  <track id='track3' label='Temperature in C'	src="test3_temp.vtt" 		kind='metadata'		srclang='en' default> 
-			  <track id='track4' label='Slide Images'		src="test3_slideimages.vtt" kind='metadata'		srclang='en' default> 
-			</video>  
-	  </div>
-	</div>
-	
-	
-	<div class="col-sm-6 map">
-      <div class="google-map-canvas" id="map-canvas">
-      </div>
-    </div>
 
-	<div class="row">
-		<div class="span6" id="text-display"></div>
-	</div>
-	<div class="row">
-		<div class="span6" id="text-temp"></div>
-	</div>
-
-	<div class="row">
-		<div class="span6" id="text-gps"></div>
-	</div>
-	<div class="row">
-		<div class="span4" id="slide-images"> 
-			<img id="imageid01" src=""
-			>
+	<div class="container">
+	    <h3>Text Data</h3>
+		<div class="row">
+		  <div class="span5">
+				<video id="video1" controls width="100%">
+				  <source src="test1.mp4"  >
+				  <track id='track1' label='English captions'	src="test3_sub.vtt" 		kind='subtitles'	srclang='en' default >    
+				  <track id='track2' label='GPS Location'     	src="test3_gps.vtt" 		kind='metadata'		srclang='en' default>  
+				  <track id='track3' label='Temperature in C'	src="test3_temp.vtt" 		kind='metadata'		srclang='en' default> 
+				  <track id='track4' label='Slide Images'		src="test3_slideimages.vtt" kind='metadata'		srclang='en' default> 
+				</video>  
+		  </div>
 		</div>
-	</div>
+		<div class="row">
+			<div class="span6" id="buttonbar">
+				<button id="restart" onclick="videoRestart();">[]</button> 
+				<button id="rew" onclick="skip(-10)">&lt;&lt;</button>
+				<button id="play" onclick="videoStartPlay()">&gt;</button>
+				<button id="fastFwd" onclick="skip(10)">&gt;&gt;</button>
+				<button id="loadPressure" onclick="loadPressureTextTrack()">Load Pressure Data</button>
+			</div>
+		</div>
 
-		<div id="buttonbar">
-			<button id="restart" onclick="restart();">[]</button> 
-			<button id="rew" onclick="skip(-10)">&lt;&lt;</button>
-			<button id="play" onclick="vidplay()">&gt;</button>
-			<button id="fastFwd" onclick="skip(10)">&gt;&gt;</button>
+		<div class="row">
+			<div class="span6">
+				<table class="table table-striped">
+					<thead>
+					  <tr>
+						<th class="col-md-1 col-sm-1">Data Type</th>
+						<th class="col-md-2 col-sm-2">Value</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+						<td class="col-md-1 col-sm-1">Close Captioned Data</td>
+						<td class="col-md-2 col-sm-2" id="text-display">Text Data</td>
+					  </tr>
+					  <tr>
+						<td>Temperature </td>
+						<td id="text-temp">Temperature</td>
+					  </tr>
+					  <tr>
+						<td>GPS Data</td>
+						<td  id="text-gps">GPS</td>
+					  </tr>
+					  <tr>
+						<td>Map</td>
+						<td>		  
+							<div id="map-canvas" class="col-sm-4"></div>
+						</td>
+					  </tr>
+					  <tr>
+						<td>Image Link</td>
+						<td><img id="imageid01" src=""></td>
+					  </tr>
+					</tbody>
+				  </table>
+			</div>
 		</div>
 		
+
+
+		<div class="row map">
+
+		</div>
+
+		  
+	</div>
+
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>

@@ -1,4 +1,4 @@
-
+//bladd
 document.addEventListener("DOMContentLoaded", function () {  // don't run this until all DOM content is loaded 
 
 	var track1 = document.getElementById("track1");
@@ -75,7 +75,7 @@ function clickroute(lat,lon) { //just omit the 'lati' and 'long'
 	map.setCenter(latLng);
 }
 
-function vidplay() {
+function videoStartPlay() {
    var video = document.getElementById("video1");
    var button = document.getElementById("play");
    if (video.paused) {
@@ -85,6 +85,58 @@ function vidplay() {
 	  video.pause();
 	  button.textContent = ">";
    }
+}
+function videoRestart() {
+   var video = document.getElementById("video1");
+   var button = document.getElementById("restart");
+   video.currentTime=0;
+   video.play();
+}
+function skip(increament) {
+
+   var video = document.getElementById("video1");
+   var button = document.getElementById("seek");
+   video.currentTime+=increament;
+   video.stop();
+   //video.play();
+}
+
+function loadPressureTextTrack(){
+	
+	var video = document.getElementById("video1");
+	console.log(video.textTracks.length);
+
+	track = document.createElement("track"); 
+
+	track.kind = "metadata"; 
+	track.id="track1";
+	track.label = "English"; 
+	track.srclang = "en"; 
+	track.src = "test3_pressure.vtt"; 
+		console.log("d");
+	track.addEventListener("load", function() { 
+		console.log("track dynamic got loaded");
+		this.mode = "showing"; 
+		video.textTracks[0].mode = "showing"; // thanks Firefox 
+	}); 
+	track.addEventListener("cuechange", function () {
+		var myCues4 = this.activeCues;      // activeCues is an array of current cues.
+		if (myCues4.length > 0) {	
+			console.log("cue hit");
+		}
+	}, false);
+	
+	video.appendChild(track); 
+	
+	var textTracksItems = video.textTracks;
+	for (var i = 0; i<textTracksItems.length; i++) {
+		console.log(video.textTracks[i].id);
+		var srcText = video.textTracks[i].src;
+		console.log(srcText);
+	}
+
+	
+
 }
 
 	
