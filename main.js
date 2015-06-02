@@ -75,7 +75,7 @@ function clickroute(lat,lon) { //just omit the 'lati' and 'long'
 	map.setCenter(latLng);
 }
 
-function vidplay() {
+function videoStartPlay() {
    var video = document.getElementById("video1");
    var button = document.getElementById("play");
    if (video.paused) {
@@ -85,6 +85,20 @@ function vidplay() {
 	  video.pause();
 	  button.textContent = ">";
    }
+}
+function videoRestart() {
+   var video = document.getElementById("video1");
+   var button = document.getElementById("restart");
+   video.currentTime=0;
+   video.play();
+}
+function skip(increament) {
+
+   var video = document.getElementById("video1");
+   var button = document.getElementById("seek");
+   video.currentTime+=increament;
+   video.stop();
+   //video.play();
 }
 
 	
